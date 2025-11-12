@@ -20,27 +20,28 @@ confidence_options = {
 confidence_choice = st.sidebar.selectbox(
     "Confidence Level",
     options=list(confidence_options.keys()),
-    index=0
+    index=0,
+    key="confidence"
 )
 z = confidence_options[confidence_choice]
 
 # Sliders
 cv_value = st.sidebar.slider(
-    "Analytical CV (%)", min_value=0.0, max_value=30.0, value=8.7, step=0.1
+    "Analytical CV (%)", min_value=0.0, max_value=30.0, value=8.7, step=0.1, key="cv"
 )
 tea_value = st.sidebar.slider(
-    "Total Allowable Error (TEa, %)", min_value=5.0, max_value=50.0, value=25.0, step=0.5
+    "Total Allowable Error (TEa, %)", min_value=5.0, max_value=50.0, value=25.0, step=0.5,key="tea"
 )
 bias_anal_max = st.sidebar.slider(
-    "Analytical Bias (%)", min_value=0.0, max_value=20.0, value=5.0, step=0.1
+    "Analytical Bias (%)", min_value=0.0, max_value=20.0, value=5.0, step=0.1,key="bias"
 )
 
 factor = st.sidebar.slider(
-    "% change per mm", min_value=0.0, max_value=5.0, value=2.74, step=0.01
+    "% change per mm", min_value=0.0, max_value=5.0, value=2.74, step=0.01,key="factor"
 )
 
 reference_size = st.sidebar.slider(
-    "Reference DBS diameter", min_value=10.0, max_value=12.0, value=10.7, step=0.1
+    "Reference DBS diameter", min_value=10.0, max_value=12.0, value=10.7, step=0.1,key="ref"
 )
 
 # --- Data calculation ---
@@ -65,6 +66,11 @@ if min_dbs_size > reference_size:
         label="Min acceptable DBS diameter (mm)",
         value="Not feasible"
     )
+elif min_dbs_size < 0:
+    st.metric(
+        label="Min acceptable DBS diameter (mm)",
+        value=0
+    )    
 else:
     st.metric(
         label="Min acceptable DBS diameter (mm)",
