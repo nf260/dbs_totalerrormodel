@@ -59,8 +59,17 @@ min_dbs_size = chosen["Min size"]
 # --- Display metric ---
 st.title("Calculated Minimum DBS Size")
 st.markdown("This model complements paper {placeholder}. Adjust parameters in sidebar")
-st.metric(label="Min acceptable DBS diameter (mm) to achieve allowable total error", value=f"{min_dbs_size:.2f}")
 
+if min_dbs_size > reference_size:
+    st.metric(
+        label="Min acceptable DBS diameter (mm)",
+        value="Not feasible"
+    )
+else:
+    st.metric(
+        label="Min acceptable DBS diameter (mm)",
+        value=f"{min_dbs_size:.2f}"
+    )
 
 # --- Plotting ---
 fig, ax = plt.subplots(figsize=(8, 6), dpi=150)
