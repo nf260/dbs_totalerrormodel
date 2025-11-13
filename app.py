@@ -145,8 +145,8 @@ ax.set_xlim(0, 30)
 ax.grid(True)
 
 # Legend
-green_patch = plt.Rectangle((0, 0), 1, 1, fc="green", alpha=0.3, label="Acceptable region")
-red_patch = plt.Rectangle((0, 0), 1, 1, fc="red", alpha=0.3, label="Unacceptable region")
+green_patch = plt.Rectangle((0, 0), 1, 1, fc="green", alpha=0.3, label="Allowable Total Error limit met")
+red_patch = plt.Rectangle((0, 0), 1, 1, fc="red", alpha=0.3, label="Allowable Total Error limit not met")
 
 ax.legend(
     handles=[
@@ -170,3 +170,4 @@ This model assumes:
 1. A linear relationship between DBS diameter and results
 2. No other major sources of pre-analytical variation (for example, multispotted or layered DBS, inadequate drying or haematocrit related effects)
 """)
+
