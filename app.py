@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # --- Page setup ---
-st.set_page_config(page_title="Minimum and Maximum DBS diameter modelling", layout="centered")
+st.set_page_config(page_title="DBS diameter range modelling", layout="centered")
 
 # --- Sidebar inputs ---
 st.sidebar.header("Adjust Parameters")
@@ -96,7 +96,7 @@ ax.fill_between(x, y_max, y_max.max() + 1, color="red", alpha=0.3)
 
 # --- Lines ---
 ax.plot(x, y_min, color="black", linewidth=2, label="Min acceptable DBS diameter")
-ax.plot(x, y_max, color="black", linewidth=2, linestyle="--", label="Max acceptable DBS diameter")
+ax.plot(x, y_max, color="black", linewidth=2, label="Max acceptable DBS diameter")
 
 # Draw horizontal L-shaped guide at chosen CV only if feasible
 if 0 <= min_dbs_size <= reference_size and max_dbs_size >= reference_size:
@@ -150,8 +150,6 @@ red_patch = plt.Rectangle((0, 0), 1, 1, fc="red", alpha=0.3, label="Allowable To
 
 ax.legend(
     handles=[
-        plt.Line2D([0], [0], color="black", lw=2, label="Min acceptable DBS diameter"),
-        plt.Line2D([0], [0], color="black", lw=2, linestyle="--", label="Max acceptable DBS diameter"),
         green_patch,
         red_patch
     ],
@@ -170,4 +168,3 @@ This model assumes:
 1. A linear relationship between DBS diameter and results
 2. No other major sources of pre-analytical variation (for example, multispotted or layered DBS, inadequate drying or haematocrit related effects)
 """)
-
